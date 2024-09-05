@@ -1,0 +1,10 @@
+{
+  "name": "Energetyczny plan lekcji",
+  "short_name": "Plan lekcji",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/index.html"
+}

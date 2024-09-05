@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#b63a3e">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/manifest.json">
+
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="grafika/logo.jpg">
+    <title>Plan lekcji</title>
+    <style></style>
+</head>
+<body>
+        <section id="left" class="left-open">
+            <header id="header" class="bg-header-bright">
+                <a href="http://energetyk.ires.pl" target="_blank"><img src="grafika/logo.jpg" alt="logo energetyka" id="header-img"></a>
+                <h1 id="header-h1" class="moirai-one-regular przycisk-zmiany" name="o1">Energetyczny plan lekcji</h1>
+                <div id="menu-toggle"><i class='fa fa-bars'></i></div>
+            </header>
+            <div id="nawigacja" class="bg-color-nav-bright">
+            <span id="button-open-nav" class="button-open-nav-open">&#9776;</span>
+            <nav id="nav" class="nav-open">
+            <div id="holder-search-close-results">
+                <div id="holder-search-close">
+                    <div id="holder-search" class="bg-holder-search-bright">
+                        <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
+                        <input type="search" id="search" name="wyszukiwanie-planu" placeholder="Wyszukaj plan...">
+                    </div>
+                    <span id="button-close-nav">&times;</span>
+                </div>
+                <div id="results">
+                </div>
+            </div>
+                
+            </nav>
+            
+            </div>
+        </section>
+        <section id="right" class="right-open">
+            <div id="tytol" class="bg-color-tytol-bright">
+                <div id="lenght" >
+                    <label class="switch">
+                        <input type="checkbox" id="change-lenght">
+                        <span class="slider bg-slider-bright color-tytol-items-bright">
+                            <span class="value-lenght"> 45'</span>
+                            <span class="value-lenght"> 30'</span>
+                        </span>
+                      </label>
+                </div>
+                <a href="#" id="print-plan" class="color-tytol-items-bright" target="_blank"><i class="fa-solid fa-print"></i></a>
+                <h2 id="h2-tytol"><!-- generated --></h2>
+                <div>
+                    <div class="select-selected motif color-tytol-items-bright"><i class="fa-regular fa-sun select-selected"></i><i class="fas fa-caret-down select-selected"></i></div>
+                    <div class="select-items bg-select-items-bright">
+                        <!-- <div id="system"><i class="fa-solid fa-display"></i></div> -->
+                        <div id="bright"><i class="fa-regular fa-sun select-selected"></i></div>
+                        <div id="dark"><i class="fa-regular fa-moon select-selected"></i></div>
+                    </div>
+                </div>
+
+                <div id="select-view">
+                    <label class="switch">
+                        <input type="checkbox" id="change-view">
+                        <span class="slider bg-slider-bright color-tytol-items-bright">
+                            <span class="value-lenght"><i class="fa-solid fa-table-cells"></i></span>
+                            <span class="value-lenght"><i class="fa-regular fa-rectangle-list"></i></span>
+                        </span>
+                      </label>
+                </div>
+                    
+            </div>
+            <div id="holder-plan-legenda" class="color-holder-plan-legenda-bright">
+                <div id="holder-plan">
+                    <!-- generated -->  
+                </div>
+                <div id="legenda">
+                    <p><span class="current-lesson-bright legenda-sample">Żółty</span> - akutalna lekcja</p>
+                    <p><span class="next-lesson-bright legenda-sample">Niebieski</span> - następna lekcja</p>    
+                </div>
+            </div>
+        </section>
+<div id="credits" class="bg-credits-bright">
+</div>
+<div id="loader">
+<span class="loader"></span>
+</div>
+<script src="gen.js"></script>
+</body>
+</html>

@@ -1,0 +1,924 @@
+html,body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: #171324;
+}
+body button {
+    color: rgb(34, 33, 33);
+}
+
+/* czcionka do headera */
+.moirai-one-regular {
+    font-family: "Moirai One", system-ui;
+    font-weight: bolder;
+    font-style: normal;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #070707;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+ #loader{
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+ }
+ 
+ @keyframes spinner-c7wet2 {
+    100% {
+       transform: rotate(1turn);
+    }
+ }
+  
+/* to jest kontaner na header i tytół nad planem lekcji */
+#left{
+    background-color: #f2f2f2;
+    transition: linear 0.5s;
+}
+.left-open{
+    width: 300px;
+    max-width: 300px;
+    height: 100vh;
+
+}
+.left-close{
+    width: 80px;
+    max-width: 80px;
+    height: 100vh;
+}
+
+/* header zawiera logo energetyka oraz nazwę planu "Energetyczny plan" */
+#header{
+    /* wyśrodkowanie i ułożenie koło siebie loga i tytółu */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    transition: linear 0.5s;
+}
+
+/* logo szkoły */
+#header img{
+    /* calc wylicza procentowo długość z podanej (żeby nie liczyc podczas zmiany tylko zmienić dł posdtawową) */
+    width: 50px;
+    border-radius: 5px;
+    margin: 8px;
+    margin-left: 14px;
+    margin-right: 15px;
+}
+
+/* tytłó planu */
+#header h1{
+    width: calc(350px - 25%);
+    max-width: 200px;
+    font-size: 150%;
+    line-height: 1.1;
+}
+#menu-toggle{
+    display: none;
+}
+
+/* stylizacja pola nav */
+/* zawiera pole wyszukiwania, przycisk zamykający pole nav, przyciski rozwijące oraz linki do innych planów*/
+#nawigacja{
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: calc(100vh - 70px);
+    /* dodawanie paska do przewijania */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: linear 0.4s; /* Added transition property for smooth animation */
+}
+
+#nav{
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.nav-open{
+    width: 100%;
+    height: calc(100vh - 70px);
+}
+
+.nav-close{
+    width: 0;
+    height: 0;
+}
+
+/* to jest div ukladajcy koło siebie pole wyszukiwania oraz przycisk zamykania */
+#holder-search-close-results{
+    width: 100%;
+    height: 50px;
+    /* display: flex; */
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+#holder-search-close{
+    display: flex;
+}
+
+/* pole wyszukiwanie stylizacja */
+#holder-search{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    /* background-color: lightgray; */
+    margin-left: 10px;
+    padding-left: 5px;
+    margin-right: 10px;
+    padding-right: 2px;
+    /* border: 1px solid #ccc; */
+    /* background-color: white; */
+    border-radius: 5px;
+    transition: linear 400ms;
+}
+
+/* sytylizacja search */
+#search{
+    height: 80%;
+    width: 90%;
+    margin-left: 5px;
+    color: black;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+#results{
+    width: calc(80% + 7px);
+    height: auto;
+    margin-left: 10px;
+    position: absolute;
+    margin-bottom: 0;
+    background: #dad9d9;
+    border: transparent;
+    border-top: transparent;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+#results button{
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 30px;
+    font-size: 0.85rem;
+    background: transparent;
+}
+.result{
+    border: 1px #b9b9b9 solid;
+    border-top: transparent;
+}
+
+/* stylizacja przycisku zamykania #nav */
+#button-close-nav{
+    cursor: pointer;
+    font-size: 200%;
+}
+#button-open-nav{
+    cursor: pointer;
+    font-size: 200%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    transition: linear 0.4s;
+}
+.button-open-nav-open{
+    display: none;
+}
+.button-open-nav-close{
+    display: flex;
+}
+
+
+/* przyciski do list cechy wspólne */
+.side-link{
+    height: 35px;
+    transition:  linear 0.25s;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.title-list-nav{
+    width: 90%;
+    height: 35px;
+    margin-left: 5%;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid gray;
+    transition: linear 120ms;
+}
+.element-side-link{
+    width: 90%;
+    height: 35px;
+    margin-left: 5%;
+    border: none;
+    background-color: transparent;
+}
+/* #side-link-Oddzialy{
+    height: 45px;
+    transition:  linear 0.25s;
+    overflow: hidden;
+    margin-bottom: 5px;
+} */
+#Oddzialy{
+    background-color: #5759c4;
+    border-color: #3d3e8f;
+}
+/* #side-link-Nauczyciele{
+    height: 45px;
+    transition: linear 0.25s;
+    overflow: hidden;
+    margin-bottom: 5px;
+} */
+#Nauczyciele{
+    background-color: #dd4f54;
+    border-color: #b13f42;
+}
+/* #side-link-Sale{
+    height: 45px;
+    transition: linear 0.25s;
+    overflow: hidden;
+    margin-bottom: 5px;
+} */
+#Sale{
+    background-color: #fcf083;
+    border-color: #d3c549;
+}
+
+.round-border{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: red;
+}
+
+
+
+#support{
+    margin: 5px;
+    padding-left: 5px;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+}
+#support a{
+    text-decoration: none;
+}
+
+/* stylizacja dołu  */
+#right{
+    height: 100vh;
+    overflow: hidden;
+    transition: linear 0.5s;
+}
+.right-open{
+    width: calc(100vw - 300px);
+}
+.right-close{
+    width: calc(100vw - 80px);
+}
+
+/* stylizacja pola obok headera */
+/* zawiera nazwę obiektu którego jest plan wyświetlany, przyciski do zmiany ustawienia godzin, widoku, oraz odnośnik do drukowania */
+#tytol{
+    /* ułozenie ich koło siebie i rozsunięcie ich na długośc*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* wyliczenie długości*/
+    width: 100%;
+    height: 70px;
+    position: relative;
+    z-index: 2;
+}
+
+#print-plan{
+    /* border: 1px black solid; */
+    /* background-color: #ccc; */
+    border-radius: 10px;
+    padding: 15px;
+    transition: .4s;
+    /* color: black; */
+    margin-left: 5px;
+}
+
+#h2-tytol{
+    width: 75%;
+    text-align: center;
+}
+
+/* miesce na dopisanie stylizacji do elementów #tytol */
+#lenght{
+    display: flex;
+    height: calc(100% - 10px);
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 98px;
+    height: 49px;
+  }
+  
+  .switch input {
+    display:none;
+}
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: #ccc; */
+    -webkit-transition: .4s;
+    transition: .4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  
+  .slider:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 50%;
+    left: 0;
+    bottom: 0;
+    /* background-color: rgba(255,255,255); */
+    -webkit-transition: .3s linear;
+    transition: .3s linear;
+    border-radius: 10px;
+  }
+
+
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(49px);
+    -ms-transform: translateX(49px);
+    transform: translateX(49px);
+  }
+
+.value-lenght{
+    width: 50%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    font-weight: 550;
+}
+
+#select-view{
+    display: flex;
+    height: calc(100% - 10px);
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .motif {
+    width: 49px;
+    height: 49px;
+    height: 47px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: linear 0.2s;
+  }
+  
+  .motif i {
+    margin: 5%;
+  }
+  
+  .select-items {
+    position: fixed;
+    border-top: none;
+    display: none;
+    z-index: 999;
+    width: 47px;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  .select-items div {
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+
+  
+  .show{
+    display: block;
+  }
+
+
+#days-holder{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-color: rgba(0,0,0,0.3) transparent;
+}
+.day{
+    height: 6.5vh;
+    width: 20%;
+    min-width: 100px;
+    font-size: 1rem;
+    border-radius: 0;
+    border: none;
+    background-color: #b13f42;
+    /* box-shadow: 1px 1px 1px black; */
+}
+
+.day:hover{
+    background-color: #973437;
+}
+.day:active{
+    box-shadow: inset 0px 0px 18px 0px rgba(0, 0, 0, 0.4);
+}
+
+#holder-plan-legenda{
+    width: 100%;
+    transition: linear 0.5s;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+    /* background-color: #f2f2f2; */
+}
+#holder-plan{
+    width: 100%;
+}
+
+#plan{
+    width: 90%;
+    max-width: 1300px;
+    max-height: 1000px;
+    font-size: 1.1rem;
+    margin-bottom: 2%;
+    margin-top: 2.5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid #dddddd;
+    border-radius: 10px; /* Zakrąglenie rogów całej tabeli */
+    overflow: hidden; /* Zapobiega "wystającej" części zaokrąglonych rogów */
+}
+  
+#plan td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+    padding-left: 10px;
+    
+}
+  
+#row1 td{
+    /* background-color: #e6e4e4; */
+    text-align: center;
+    padding-left: 0;
+    height: 40px;
+    font-weight: 550;
+}
+
+.nr span, .godz span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.godz{
+    min-width: 90px;
+}
+
+td i{
+    font-size: 0.76rem;
+    color: rgb(82, 82, 82);
+    position: relative;
+    bottom: 2px;
+
+}
+#plan span{
+    width: 100%;
+}
+
+#plan .przycisk-zmiany{
+    cursor: pointer;
+    width: 50% !important;
+}
+
+
+.current-lesson-bright, .next-lesson-bright, .current-lesson-dark, .next-lesson-dark{
+    position: relative;
+    border-radius: 7px;
+}
+
+.current-lesson-bright{
+    background-color: #f3e388;
+    border: 1px solid #ebd55c !important;
+}
+
+.next-lesson-bright{
+    background-color: #7d9bee;
+    border: 1px solid  #6868ee !important;
+}
+.current-lesson-bright, .next-lesson-bright{
+    scale: 1.07;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 
+                -2px -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#expiration-date{
+    width: 90%;
+    max-width: 1300px;
+    max-height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25%;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#legenda{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5%;
+}
+
+#legenda p{
+    font-size: 1.3rem;
+    margin-right: 20px;
+    margin-left: 20px;
+    min-width: 250px;
+}
+
+#legenda span{
+    padding: 10px;
+    font-weight: 550;
+}
+
+#credits{
+    display: none;
+    position: fixed;
+    width: 30%;
+    height: 40%;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    border: 1px solid  rgb(100, 100, 100);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4), 
+                -2px -2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* klasy kolorów */
+
+.color-holder-plan-legenda-bright{
+    background-color: #f2f2f2;
+    color: rgb(44, 44, 44);
+}
+.color-holder-plan-legenda-bright #row1{
+    background-color: #e6e4e4;
+}
+
+.color-holder-plan-legenda-dark{
+    background-color: #3d3d3d;
+    color: #dfdfdf;
+    scrollbar-color:  #646464 transparent;
+}
+.color-holder-plan-legenda-dark #row1{
+    background-color: #5e5d5d;
+}
+
+
+.bg-color-nav-bright{
+    background-color: #ced3e2;
+}
+
+.bg-color-nav-dark{
+    background-color: #40414e;
+    scrollbar-color:  #6c7a89 #535466;
+}
+.bg-holder-search-bright{
+    background-color: white;
+    border: 1px solid #ccc;
+}
+.bg-holder-search-dark{
+    background-color: #747b83;
+    border: 1px solid #2a2d30;
+}
+.bg-holder-search-dark input{
+    color: whitesmoke;
+}
+.bg-holder-search-dark input::placeholder{
+    color: whitesmoke;
+}
+
+.bg-color-tytol-bright{
+    background-color: #dfdfdf;
+    box-shadow: 0px 2px 20px rgb(80 78 78 / 65%);
+}
+.bg-color-tytol-bright h2{
+    color: rgb(44, 44, 44);
+}
+.bg-color-tytol-bright a{
+    color: black;
+}
+
+.bg-color-tytol-dark{
+    background-color: #333333;
+    box-shadow: 0px 2px 20px rgba(138, 136, 136, 0.65);
+    color: white;
+}
+.bg-color-tytol-dark h2{
+    color: rgb(180, 180, 180);
+}
+.bg-color-tytol-dark a{
+    color: white;
+}
+
+.bg-credits-bright{
+    background-color: #bdbbbb;
+}
+.bg-credits-dark{
+    background-color: #8a8a8a;
+}
+
+.side-link:last-child{
+    border-bottom: 1px solid #aeb0b8;
+}
+
+.current-row-bright{
+    background-color: #f7efc6;
+    border: 1px solid #d1b721;
+    color: #181818;
+}
+
+.next-row-bright{
+    background-color: #c5d1f1;
+    border: 1px solid  #3a3beb;
+    color: #181818;
+
+}
+
+.current-lesson-bright{
+    background-color: #f3e388;
+    border: 1px solid #ebd55c !important;
+    color: #181818;
+}
+
+.next-lesson-bright{
+    background-color: #7d9bee;
+    border: 1px solid  #6868ee !important;
+    color: #181818;
+}
+.current-lesson-bright i, .next-lesson-bright i{
+    color: rgb(49, 49, 49);
+}
+
+.color-tytol-items-bright{
+    background-color: #ccc;
+}
+.bg-slider-bright::before{
+    background-color: #fff;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5),
+                -1px -1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.color-tytol-items-dark{
+    background-color: #7a7979;
+}
+.bg-slider-dark::before{
+    background-color: #161616;
+    box-shadow: 1px 1px 10px rgba(109, 0, 0, 0.5),
+    -1px -1px 10px rgba(255, 146, 146, 0.5);
+}
+
+  
+.color-tytol-items-bright:hover, .color-tytol-items-dark:hover{
+    background-color: rgb(182, 180, 180);
+  }
+
+.bg-select-items-bright{
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+}
+.bg-select-items-bright div:hover {
+    background-color: #ddd;
+  }
+
+.bg-select-items-dark{
+    background-color: #292929;
+    border: 1px solid #3a3a3a;
+}
+.bg-select-items-dark div:hover {
+    background-color: #424242;
+}
+
+.bg-header-bright{
+
+    background-color: #b63a3e;
+}
+.bg-header-dark{
+    background-color: #b63a3e;
+}
+
+.bg-color-for-link-bright{
+    background-color: #ebedf5;
+    border-left: 1px solid #c4c7d3;
+    border-right: 1px solid #c4c7d3;
+}
+.bg-color-for-link-dark{
+    background-color: #626469;
+    border-left: 1px solid #3f4044;
+    border-right: 1px solid #3f4044;
+    color: rgb(233, 231, 231);
+}
+
+/* -webkit-min-device-pixel-ratio: 3 */
+@media screen and (max-width: 767px) {
+    body{
+        display: flex;
+        flex-direction: column-reverse;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+    #left{
+        /* width: 100%; */
+        overflow:  hidden;
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 70px);
+        transition: linear 200ms;
+        z-index: 898;
+        box-shadow: 0 -1px 20px rgba(0, 0, 0, 0.4);
+        
+    }
+    .left-open{
+        top: 90%;
+        max-width: none;
+        height: 10vh;
+    }
+    #header {
+        height: 10vh;
+        justify-content: center;
+        flex-direction: row-reverse;
+    }
+    /* #header img{
+        width: 65px;
+    } */
+    #menu-toggle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5%;
+        width: 15%;
+        height: 100%;
+    }
+    #menu-toggle i{
+        font-size: 200%;
+    }
+
+    
+    /*     ["nav-open", "nav-close"],
+    ["button-open-nav-open", "button-open-nav-close"],
+    ["left-open","left-close"],
+    ['right-open', "right-close"] */
+
+    .left-close{
+        max-width: none;
+        /* position: absolute; */
+        top: 70px;
+        /* left: 0; */
+        transition:linear 200ms;
+
+    }
+    .left-close #header{
+        height: 10%;
+    }
+    .button-open-nav-close{
+        display: none;
+    }
+    .nav-close{
+        width: 100%;
+        height: calc(100% - 70px);
+    }
+    .right-close{
+        width: 100%;
+        height: 90%;
+    }
+
+    #holder-search-close{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #holder-search{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #results{
+        position: relative;
+        width: calc(90% + 7px);
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    #button-close-nav{
+        display: none;
+    }
+
+
+    #right{
+        width: 100%;
+        height: 90%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* display: flex;
+        flex-direction: column-reverse; */
+    }
+    #tytol{
+        z-index: 99;
+    }
+    #print-plan{
+        display: none;
+    }
+    #name-of-plan{
+        display: none;
+    }
+    /* .show{
+        bottom: 56px;
+    } */
+    #holder-plan-legenda{
+        height: calc(100% - 70px);
+    }
+    #legenda{
+        display: block;
+    }
+    #legenda p{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .legenda-sample{
+        margin-right: 6px;
+    }
+}
